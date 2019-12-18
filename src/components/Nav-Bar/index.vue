@@ -1,8 +1,8 @@
 <template>
   <nav class="nav-bar-container">
     <div class="nav-bar-list">
-      <router-link to="/" class="nav-bar-item nav-bar-item--active">
-        <img class="item-image" src="/img/home-white.svg" alt="Accueil" />
+      <router-link to="/" class="nav-bar-item nav-bar-item--active" :class="`${route == '/' ? 'nav-bar-item--active' : ''}`">
+        <img class="item-image" :src="`/img/${route == 'Home' ? 'home-white' : 'home'}.svg`" alt="Accueil" />
         <span>Accueil</span>
       </router-link>
       <router-link to="/notifications" class="nav-bar-item">
