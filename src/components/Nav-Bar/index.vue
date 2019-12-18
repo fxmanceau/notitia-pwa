@@ -1,39 +1,36 @@
 <template>
-    <nav class="nav-bar-container">
-        <div class="nav-bar-list">
-            <router-link :to="`/${lang}/alert`" class="nav-bar-item">
-                <img
-                    class="item-image"
-                    :src="`/img/navbar/pin${route == 'alert' ? '-active' : ''}.svg`"
-                    alt="Ma commune"
-                />
-                <span class="item-title">Ma commune</span>
-            </router-link>
-            <router-link :to="`/${lang}/danger`" class="nav-bar-item">
-                <img
-                    class="item-image"
-                    :src="`/img/navbar/home${route == 'danger' ? '-active' : ''}.svg`"
-                    alt="Informations"
-                />
-                <span class="item-title">Informations</span>
-            </router-link>
-            <router-link :to="`/${lang}/dashboard`" class="nav-bar-item">
-                <img
-                    class="item-image"
-                    :src="`/img/navbar/alert${route == 'dashboard' ? '-active' : ''}.svg`"
-                    alt="Urgence"
-                />
-                <span class="item-title">Urgence</span>
-            </router-link>
-        </div>
-    </nav>
+  <nav class="nav-bar-container">
+    <div class="nav-bar-list">
+      <router-link to="/" class="nav-bar-item nav-bar-item--active">
+        <img class="item-image" src="/img/home-white.svg" alt="Accueil" />
+        <span>Accueil</span>
+      </router-link>
+      <router-link to="/notifications" class="nav-bar-item">
+        <img class="item-image" src="/img/notifications.svg" alt="Notifications" />
+        <span>Notifications</span>
+      </router-link>
+      <router-link to="/account" class="nav-bar-item">
+        <img class="item-image" src="/img/account.svg" alt="Compte" />
+        <span>Compte</span>
+      </router-link>
+
+      <!-- <router-link :to="`/${lang}/dashboard`" class="nav-bar-item">
+        <img
+          class="item-image"
+          :src="`/img/navbar/alert${route == 'dashboard' ? '-active' : ''}.svg`"
+          alt="Urgence"
+        />
+        <span class="item-title">Urgence</span>
+      </router-link>-->
+    </div>
+  </nav>
 </template>
 
 <script>
 export default {
-    name: 'Navbar',
-    props: ['route', 'lang'],
-}
+  name: "Navbar",
+  props: ["route", "lang"]
+};
 </script>
 
 <style lang="scss" scoped>

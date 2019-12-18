@@ -3,13 +3,13 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    padding: 1.5rem 0;
+    padding: 2rem 1rem;
     background: #ffffff;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
 
     .nav-bar-list {
         width: 100%;
-        height: 3.2rem;
+        height: 4rem;
         display: flex;
         justify-content: space-around;
         align-items: space-around;
@@ -18,10 +18,27 @@
             width: calc(100% / 3);
             height: 100%;
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             text-decoration: none;
+            color: #9D9D9D;
+
+            span {
+                display: none;
+            }
+
+            &--active {
+                color: #ffffff;
+                border-radius: 2rem;
+                padding: 0 0.5rem;
+                
+                background-color: #F87372;
+
+                span {
+                    display: block;
+                    margin-left: 1rem;
+                }
+            }
 
             .item-image {
             }
