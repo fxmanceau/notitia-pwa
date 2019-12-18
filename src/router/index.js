@@ -7,8 +7,37 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: Map
+    name: "Home",
+    component: Map,
+    meta: {
+      title: "Carte",
+      description: "Lorem ipsum",
+      locationButton: true,
+      dropdown: {
+        options: [
+          {
+            value: "all",
+            text: "Tout"
+          },
+          {
+            value: "food",
+            text: "Nourriture"
+          },
+          {
+            value: "host",
+            text: "Hébergement"
+          },
+          {
+            value: "health",
+            text: "Santé"
+          },
+          {
+            value: "wear",
+            text: "Vêtement"
+          }
+        ]
+      }
+    }
   }
 ];
 

@@ -1,3 +1,11 @@
 module.exports = {
-  lintOnSave: false
-}
+  lintOnSave: false,
+  pwa: {
+    workboxOptions: {
+      navigateFallback: "/index.html"
+    }
+  },
+  devServer: {
+    https: false
+  }
+};
