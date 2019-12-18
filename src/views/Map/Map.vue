@@ -1,11 +1,16 @@
 <template>
-  <div class="global-map"></div>
+  <div class="global-map">
+    <MapComponent />
+  </div>
 </template>
 
 <script>
+import MapComponent from "@/components/Map";
 export default {
   name: "Map",
-  components: {},
+  components: {
+    MapComponent
+  },
   data() {
     return {};
   },

@@ -9,8 +9,19 @@ export default {
   name: "Map",
   data() {
     return {
-      map: undefined
+      map: undefined,
+      currentPosition: {
+        lat: null,
+        lng: null
+      }
     };
+  },
+  created() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.getLocation);
+    } else {
+      throw new console.warn("This device does not support geolocation");
+    }
   },
   mounted() {
     this.map = map("map").setView(
@@ -38,6 +49,15 @@ export default {
     // });
   },
   methods: {
+    getLocation(position) {
+      this.currentPosition.lat = position.coords.latitude;
+      this.currentPosition.lng = position.coords.longitude;
+
+      this.map.setView(
+        { lat: this.currentPosition.lat, lng: this.currentPosition.lng },
+        16
+      );
+    },
     addMarker(type, lat, lng) {
       const iconEl = this.makeIcon(type);
 
