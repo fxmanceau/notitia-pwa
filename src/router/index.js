@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Map from "../views/Map/Map.vue";
+import Actu from "../views/Actus";
 
 Vue.use(VueRouter);
 
@@ -38,6 +39,11 @@ const routes = [
         ]
       }
     }
+  },
+  {
+    path: "/actus",
+    name: "Actu",
+    component: Actu
   }
 ];
 
