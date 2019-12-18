@@ -1,8 +1,21 @@
 <template>
   <div id="app">
-    <router-view />
+   <Navbar />
+    <router-view/>
   </div>
 </template>
+<script>
+// @ is an alias to /src
+import Navbar from "@/components/Nav-Bar";
+
+export default {
+  name: "home",
+  components: {
+    Navbar
+  }
+};
+</script>
+
 
 <style lang="scss">
 @import "@/components/App/Reset.scss";
