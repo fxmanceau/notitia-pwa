@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <HeaderTop v-if="$route.name != 'Connection'" />
-    <Navbar v-if="$route.name != 'Connection'" />
+    <HeaderTop v-if="$route.name != 'Connection' && $route.name != 'Article'" />
+    <Navbar v-if="$route.name != 'Connection' && $route.name != 'Article'" />
     <router-view />
   </div>
 </template>
@@ -19,6 +19,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/components/App/Reset.scss";
-@import "@/components/App/App.scss";
+@import '@/components/App/Reset.scss';
+@import '@/components/App/App.scss';
 </style>

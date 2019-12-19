@@ -1,0 +1,78 @@
+.hero {
+  padding: 2rem 4rem;
+
+  background-image: url('/img/bg-article.jpg');
+  background-size: cover;
+
+  &__return {
+    display: flex;
+
+    align-items: center;
+    img {
+      width: 1.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      font-weight: 700;
+
+      margin-left: 0.5rem;
+
+      color: #ffffff;
+    }
+  }
+
+  &__top {
+    display: flex;
+
+    margin-top: 2rem;
+
+    align-items: center;
+  }
+
+  &__tag {
+    font-size: 0.8rem;
+    font-weight: bold;
+
+    display: block;
+
+    width: min-content;
+    padding: 0.5rem 1rem;
+
+    color: #ffffff;
+    border-radius: 1rem;
+    background-color: #f87372;
+  }
+
+  &__date {
+    font-size: 1rem;
+    font-weight: 700;
+
+    margin-left: 1.5rem;
+
+    color: #ffffff;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+
+    margin-top: 2rem;
+
+    color: #ffffff;
+  }
+
+  &__description {
+    font-size: 1rem;
+
+    margin-top: 2rem;
+
+    color: #ffffff;
+  }
+}
+
+.content {
+  padding: 4rem;
+
+  color: #535353;
+}
