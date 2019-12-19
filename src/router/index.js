@@ -1,7 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Map from "../views/Map/Map.vue";
+import Alerts from "../views/Alerts";
 import Actu from "../views/Actus";
+import Account from "../views/Account";
 
 Vue.use(VueRouter);
 
@@ -12,7 +14,7 @@ const routes = [
     component: Map,
     meta: {
       title: "Carte",
-      description: "Lorem ipsum",
+      description: "D'informations",
       locationButton: true,
       dropdown: {
         options: [
@@ -41,9 +43,67 @@ const routes = [
     }
   },
   {
-    path: "/actus",
-    name: "Actu",
-    component: Actu
+    path: "/alerts",
+    name: "Alertes",
+    component: Alerts,
+    meta: {
+      title: "Alertes",
+      description: "Autour de vous",
+      locationButton: false,
+      dropdown: {
+        options: [
+          {
+            value: "all",
+            text: "Tout"
+          },
+          {
+            value: "event",
+            text: "Dangers"
+          },
+          {
+            value: "weather",
+            text: "Météo"
+          }
+        ]
+      }
+    }
+  },
+  {
+    path: "/news",
+    name: "News",
+    component: Actu,
+    meta: {
+      title: "Actus",
+      description: "Autour de vous",
+      locationButton: false,
+      dropdown: {
+        options: [
+          {
+            value: "all",
+            text: "Tout"
+          },
+          {
+            value: "event",
+            text: "Évenements"
+          },
+          {
+            value: "weather",
+            text: "Météo"
+          }
+        ]
+      }
+    }
+  },
+  {
+    path: "/account",
+    name: "Account",
+    component: Account,
+    meta: {
+      title: "Compte",
+      description: "Général",
+      locationButton: false,
+      dropdown: false
+    }
   }
 ];
 

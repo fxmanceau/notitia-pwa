@@ -1,14 +1,29 @@
 <template>
-  <div id="map"></div>
+  <div class="map-container" id="map">
+    <div
+      class="location-button"
+      v-if="$route.meta.locationButton"
+      @click="resetView"
+    >
+      <img src="/img/location.svg" alt="location button" />
+      <transition name="slide">
+        <MapCard :content="card" v-if="card" v-hammer:swipe.down="clearCard" />
+      </transition>
+    </div>
+  </div>
 </template>
 
 <script>
 import { map, tileLayer, marker, icon } from "leaflet";
 import { TweenLite } from "gsap";
 import axios from "axios";
+import MapCard from "@/components/Map-Card";
 
 export default {
   name: "Map",
+  components: {
+    MapCard
+  },
   data() {
     return {
       map: undefined,
@@ -17,7 +32,9 @@ export default {
         lng: 2.3482778482139115
       },
       catLayer: [],
-      zoom: 0.6
+      zoom: 0.6,
+      categories: "1%2C2%2C6%2C3",
+      card: false
     };
   },
   created() {
@@ -75,6 +92,9 @@ export default {
     // this.callApi();
   },
   methods: {
+    clearCard() {
+      this.card = false;
+    },
     getLocation(position) {
       this.currentPosition.lat = position.coords.latitude;
       this.currentPosition.lng = position.coords.longitude;
@@ -96,18 +116,32 @@ export default {
       );
     },
     rotateUserMarker(e) {
-      TweenLite.to(this.userMarker._icon, 0.2, {
-        rotation: -e.alpha,
-        transformOrigin: "center"
-      });
+      if (this.userMarker) {
+        TweenLite.to(this.userMarker._icon, 0.2, {
+          rotation: -e.alpha,
+          transformOrigin: "center"
+        });
+      }
     },
-    addMarker(type, lat, lng) {
+    resetView() {
+      this.map.setView(
+        { lat: this.currentPosition.lat, lng: this.currentPosition.lng },
+        16
+      );
+    },
+    addMarker(type, lat, lng, properties) {
       const iconEl = this.makeIcon(type);
 
       const markerEl = marker([lat, lng], { icon: iconEl });
+      if (type != "user") {
+        markerEl.properties = properties;
+      }
+
       markerEl.addTo(this.map);
       markerEl.on("click", e => {
-        console.log(e);
+        this.map.setView({ lat: e.latlng.lat, lng: e.latlng.lng }, 16);
+        this.card = e.target.properties;
+        console.log(this.card);
       });
       if (type === "user") {
         this.userMarker = markerEl;
@@ -146,10 +180,33 @@ export default {
         iconAnchor: [17, 34]
       });
     },
+    getCategory() {
+      switch (this.$store.state.category) {
+        case "all":
+          this.categories = "1%2C2%2C6%2C3";
+          break;
+        case "food":
+          this.categories = 1;
+          break;
+        case "host":
+          this.categories = 2;
+          break;
+        case "health":
+          this.categories = 3;
+          break;
+        case "wear":
+          this.categories = 6;
+          break;
+        default:
+          this.categories = "1%2C2%2C6%2C3";
+          break;
+      }
+    },
     callApi(lat, lng, zoom) {
+      this.getCategory();
       axios
         .get(
-          `${this.$store.state.baseUrl}/api/entourage?lat=${lat}&lng=${lng}&zoom=${zoom}`
+          `${this.$store.state.baseUrl}/api/entourage?lat=${lat}&lng=${lng}&zoom=${zoom}&categories=${this.categories}`
         )
         .then(response => {
           this.apiResult = response.data;
@@ -164,11 +221,23 @@ export default {
 
           if (typeof this.apiResult === "array") {
             this.apiResult.forEach(array => {
-              array.pois.forEach(item => {});
+              array.pois.forEach(item => {
+                this.addMarker(
+                  item.category_id,
+                  item.latitude,
+                  item.longitude,
+                  item
+                );
+              });
             });
           } else {
             this.apiResult.pois.forEach(item => {
-              this.addMarker(item.category_id, item.latitude, item.longitude);
+              this.addMarker(
+                item.category_id,
+                item.latitude,
+                item.longitude,
+                item
+              );
             });
           }
 
@@ -187,6 +256,17 @@ export default {
             );
           }
         });
+    }
+  },
+  computed: {
+    dropdownValue() {
+      return this.$store.state.category;
+    }
+  },
+  watch: {
+    dropdownValue() {
+      const position = this.map.getCenter();
+      this.callApi(position.lat, position.lng, this.zoom);
     }
   },
   beforeDestroy() {

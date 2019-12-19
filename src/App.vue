@@ -1,20 +1,22 @@
 <template>
   <div id="app">
-   <Navbar />
-    <router-view/>
+    <HeaderTop />
+    <Navbar />
+    <router-view />
   </div>
 </template>
 <script>
 // @ is an alias to /src
 import Navbar from "@/components/Nav-Bar";
+import HeaderTop from "@/components/Header";
 
 export default {
   components: {
+    HeaderTop,
     Navbar
   }
 };
 </script>
-
 
 <style lang="scss">
 @import "@/components/App/Reset.scss";

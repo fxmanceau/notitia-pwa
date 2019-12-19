@@ -44,8 +44,8 @@ export default {
           image: "news"
         },
         {
-          link: "/profil",
-          name: "Profile",
+          link: "/account",
+          name: "Compte",
           image: "profil"
         }
       ]

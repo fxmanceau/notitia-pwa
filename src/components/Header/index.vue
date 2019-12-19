@@ -4,20 +4,20 @@
       <h1 class="page-title">{{ $route.meta.title }}</h1>
       <span class="page-description">{{ $route.meta.description }}</span>
     </div>
-    <select
-      :name="`${route.name}-dropdown`"
-      class="page-dropdown"
-      v-if="$route.meta.dropdown"
-    >
-      <option
-        :value="option.value"
-        v-for="option in dropdown.options"
-        :key="option.id"
-        >{{ option.text }}</option
+    <div class="dropdown-container">
+      <select
+        :name="`${$route.name}-dropdown`"
+        class="page-dropdown"
+        v-if="$route.meta.dropdown"
+        @change="updateCategory"
       >
-    </select>
-    <div class="location-button" v-if="$route.meta.locationButton">
-      <img src="/img/location.svg" alt="location button" />
+        <option
+          :value="option.value"
+          v-for="option in $route.meta.dropdown.options"
+          :key="option.id"
+          >{{ option.text }}</option
+        >
+      </select>
     </div>
   </header>
 </template>
@@ -27,7 +27,13 @@ export default {
   name: "HeaderTop",
   data() {
     return {};
-  }
+  },
+  methods: {
+    updateCategory(e) {
+      this.$store.commit("updateCategory", e.target.value);
+    }
+  },
+  mounted() {}
 };
 </script>
 
