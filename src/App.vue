@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <HeaderTop />
-    <Navbar />
+    <HeaderTop v-if="$route.name != 'Connection'" />
+    <Navbar v-if="$route.name != 'Connection'" />
     <router-view />
   </div>
 </template>

@@ -1,2 +1,47 @@
 .global-connection {
+  width: 100%;
+  height: 100%;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .logo-container {
+    width: 30%;
+    margin-bottom: 10vh;
+    .logo {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .connection-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 8vh;
+    .connection-title {
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: #000000;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .connection-text {
+      width: 80%;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: #c4c4c4;
+      text-align: center;
+      line-height: 2.4rem;
+    }
+  }
+
+  .connection-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

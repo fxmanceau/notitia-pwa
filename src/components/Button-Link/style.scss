@@ -1,0 +1,27 @@
+.button-link {
+  width: 100%;
+  text-align: center;
+  .button {
+    width: 100%;
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    border-radius: 3rem;
+    padding: 1.5rem 3rem;
+    background-color: #f87372;
+    text-align: center;
+    text-decoration: none;
+  }
+  &:not(:last-of-type) {
+    margin-bottom: 2rem;
+  }
+
+  &.outline {
+    .button {
+      color: #c4c4c4;
+      border: 0.1rem solid #c4c4c4;
+      background: transparent;
+    }
+  }
+}
