@@ -4,7 +4,7 @@
       <a :href="`/article/${actu}`" class="actus__actu">
         <img src="/temp/actu.jpg" alt="actu" />
         <div class="actus__content">
-          <div class="actus__tag">Intempéries {{actu}}</div>
+          <div class="actus__tag">Intempéries</div>
           <h1>
             Inondations : quatre départements en vigilance orange, une troisième
             victime.
@@ -22,5 +22,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'style.scss';
+@import "style.scss";
 </style>

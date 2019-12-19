@@ -3,10 +3,10 @@
     <div class="logo-container">
       <img src="/img/logo-corail.svg" alt="Logo Notitia" class="logo" />
     </div>
-    <div
-      class="connection-text-container"
-      v-if="page[step].title && page[step].text"
-    >
+    <div class="check-container" v-if="step == 6">
+      <img src="/img/check.svg" alt="Logo check" class="check" />
+    </div>
+    <div class="connection-text-container">
       <h2 class="connection-title" v-if="page[step].title">
         {{ page[step].title }}
       </h2>
@@ -28,12 +28,14 @@
 <script>
 import ButtonLink from "@/components/Button-Link";
 import SelectMenu from "@/components/Select-Menu";
+import InputBloc from "@/components/Input-Bloc";
 
 export default {
   name: "Connection",
   components: {
     ButtonLink,
-    SelectMenu
+    SelectMenu,
+    InputBloc
   },
   props: ["step"],
   data() {
@@ -99,7 +101,7 @@ export default {
             },
             {
               name: "ButtonLink",
-              link: "/connection/4",
+              link: "/connection/7",
               text: "Je veux aider",
               class: "outline"
             }
@@ -112,15 +114,75 @@ export default {
           components: [
             {
               name: "ButtonLink",
-              link: "/connection/5",
+              link: "/connection/4",
               text: "Se connecter",
               class: ""
             },
             {
               name: "ButtonLink",
-              link: "/connection/6",
+              link: "/connection/5",
               text: "Créer un compte",
               class: "outline"
+            }
+          ]
+        },
+        {
+          title: "Se connecter",
+          components: [
+            {
+              name: "InputBloc",
+              button: {
+                name: "ButtonLink",
+                link: "/",
+                text: "Connexion",
+                class: ""
+              },
+              inputs: [
+                {
+                  type: "tel",
+                  placeholder: "Téléphone"
+                },
+                {
+                  type: "password",
+                  placeholder: "Mot de passe"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          title: "Créer un compte",
+          components: [
+            {
+              name: "InputBloc",
+              button: {
+                name: "ButtonLink",
+                link: "/connection/6",
+                text: "Créer",
+                class: ""
+              },
+              inputs: [
+                {
+                  type: "tel",
+                  placeholder: "Téléphone"
+                },
+                {
+                  type: "password",
+                  placeholder: "Mot de passe"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          title: "Bienvenue parmis nous !",
+          text: "Vous avez été enregistré",
+          components: [
+            {
+              name: "ButtonLink",
+              link: "/",
+              text: "Accueil",
+              class: ""
             }
           ]
         },
@@ -142,7 +204,7 @@ export default {
   },
   beforeCreate() {
     if (!this.$route.params) {
-      router.push({ path: "/connection/0" });
+      this.$router.push({ path: "/connection/0" }, () => {});
     }
   }
 };

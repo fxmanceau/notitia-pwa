@@ -14,11 +14,14 @@ export default {
   components: {
     HeaderTop,
     Navbar
+  },
+  beforeCreate() {
+    this.$router.push({ path: "/connection/0" }, () => {});
   }
 };
 </script>
 
 <style lang="scss">
-@import '@/components/App/Reset.scss';
-@import '@/components/App/App.scss';
+@import "@/components/App/Reset.scss";
+@import "@/components/App/App.scss";
 </style>
