@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Map from "../views/Map/Map.vue";
 import Alerts from "../views/Alerts";
+import Article from "../views/Article";
 import Actu from "../views/Actus";
 import Account from "../views/Account";
 import Connection from "../views/Connection";
@@ -94,6 +95,12 @@ const routes = [
         ]
       }
     }
+  },
+  {
+    path: "/article/:id",
+    props: route => ({ step: route.params.id }),
+    name: "Article",
+    component: Article
   },
   {
     path: "/account",
