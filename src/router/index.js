@@ -107,6 +107,10 @@ const routes = [
     }
   },
   {
+    path: "/connection",
+    redirect: "/connection/0"
+  },
+  {
     path: "/connection/:id",
     props: route => ({ step: route.params.id }),
     name: "Connection",

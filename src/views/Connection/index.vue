@@ -3,9 +3,16 @@
     <div class="logo-container">
       <img src="/img/logo-corail.svg" alt="Logo Notitia" class="logo" />
     </div>
-    <div class="connection-text-container">
-      <h2 class="connection-title">{{ page[step].title }}</h2>
-      <p class="connection-text">{{ page[step].text }}</p>
+    <div
+      class="connection-text-container"
+      v-if="page[step].title && page[step].text"
+    >
+      <h2 class="connection-title" v-if="page[step].title">
+        {{ page[step].title }}
+      </h2>
+      <p class="connection-text" v-if="page[step].text">
+        {{ page[step].text }}
+      </p>
     </div>
     <div class="connection-content">
       <component
@@ -20,11 +27,13 @@
 
 <script>
 import ButtonLink from "@/components/Button-Link";
+import SelectMenu from "@/components/Select-Menu";
 
 export default {
   name: "Connection",
   components: {
-    ButtonLink
+    ButtonLink,
+    SelectMenu
   },
   props: ["step"],
   data() {
@@ -44,21 +53,36 @@ export default {
           ]
         },
         {
-          title: "Bonjour, nous sommes Notitia",
-          text:
-            "Placerat justo risus sed odio. Phasellus mattis magna turpis, id malesuada nisl sollicitudin et.",
           components: [
             {
-              name: "ButtonLink",
-              link: "/connection/2",
-              text: "Je veux être aidé",
-              class: ""
-            },
-            {
-              name: "ButtonLink",
-              link: "/connection/3",
-              text: "Je veux aider",
-              class: "outline"
+              name: "SelectMenu",
+              title: "Sélectionner la langue",
+              button: {
+                name: "ButtonLink",
+                link: "/connection/2",
+                text: "Valider",
+                class: ""
+              },
+              options: [
+                {
+                  name: "English"
+                },
+                {
+                  name: "Français"
+                },
+                {
+                  name: "Español"
+                },
+                {
+                  name: "Italiano"
+                },
+                {
+                  name: "Românesc"
+                },
+                {
+                  name: "العربية"
+                }
+              ]
             }
           ]
         },
@@ -69,14 +93,33 @@ export default {
           components: [
             {
               name: "ButtonLink",
-              link: "/connection/2",
+              link: "/connection/3",
               text: "Je veux être aidé",
               class: ""
             },
             {
               name: "ButtonLink",
-              link: "/connection/3",
+              link: "/connection/4",
               text: "Je veux aider",
+              class: "outline"
+            }
+          ]
+        },
+        {
+          title: "C'est parti !",
+          text:
+            "Placerat justo risus sed odio. Phasellus mattis magna turpis, id malesuada nisl sollicitudin et.",
+          components: [
+            {
+              name: "ButtonLink",
+              link: "/connection/5",
+              text: "Se connecter",
+              class: ""
+            },
+            {
+              name: "ButtonLink",
+              link: "/connection/6",
+              text: "Créer un compte",
               class: "outline"
             }
           ]
@@ -88,7 +131,7 @@ export default {
           components: [
             {
               name: "ButtonLink",
-              link: "/connection/0",
+              link: "/connection/2",
               text: "Retour",
               class: ""
             }
@@ -96,6 +139,11 @@ export default {
         }
       ]
     };
+  },
+  beforeCreate() {
+    if (!this.$route.params) {
+      router.push({ path: "/connection/0" });
+    }
   }
 };
 </script>
