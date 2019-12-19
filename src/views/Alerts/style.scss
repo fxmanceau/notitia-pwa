@@ -1,40 +1,96 @@
-.global-news {
+.global-alerts {
   padding: 12rem 2rem 10rem;
-  .actus {
-    &:not(:last-of-type) {
-      margin-bottom: 3rem;
-    }
-    &__actu {
-      border-radius: 22px;
-      box-shadow: 0px 4px 30px rgba(162, 162, 162, 0.3);
+  .alerts {
+    &__alert {
+      display: flex;
       overflow: hidden;
 
-      img {
-        width: 100%;
-        height: 15rem;
-        object-fit: cover;
+      padding: 0.5rem;
+
+      border-radius: 22px;
+      box-shadow: 0 4px 30px rgba(162, 162, 162, 0.3);
+
+      align-items: center;
+      flex-wrap: wrap;
+
+
+      &--map {
+        padding: 0;
+        padding-top: 0.5rem;
+
+        .alerts__alert-icon {
+          margin-left: 0.5rem;
+        }
+
+        .alerts__alert-content {
+          margin-right: 0.5rem;
+        }
+      }
+
+      &:not(:last-of-type) {
+        margin-bottom: 1.5rem;
+      }
+
+      &-map {
+        margin-top: 1rem;
+
+        flex: 0 0 100%;
+
+        img {
+          display: block;
+
+          width: 100%;
+          height: 12rem;
+
+          object-fit: cover;
+        }
+      }
+
+      &-icon {
+        display: flex;
+
+        width: 7rem;
+        height: 7rem;
+
+        border-radius: 1.6rem;
+
+        align-items: center;
+        justify-content: center;
+
+        &--meteo {
+          background-color: #31495a;
+        }
+        &--attack {
+          background-color: #f87372;
+        }
+
+        img {
+          width: 3.5rem;
+        }
       }
     }
 
     &__content {
-      padding: 1rem 2rem 2rem;
-    }
+      margin-left: 2rem;
 
-    &__tag {
-      width: min-content;
-      display: block;
-      color: #fff;
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: #f87372;
-      font-weight: bold;
-      font-size: 0.8rem;
-      border-radius: 1rem;
-    }
+      flex: 1;
 
-    h1 {
-      margin-top: 1rem;
-      font-weight: bold;
+      h3 {
+        font-size: 1rem;
+
+        color: #31495a;
+
+        strong {
+          font-weight: 700;
+        }
+      }
+
+      p {
+        font-size: 1rem;
+        font-weight: 300;
+
+        margin-top: 0.5rem;
+      }
     }
   }
 }
