@@ -11,8 +11,12 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
+    path: '/',
+    redirect: 'news'
+  },
+  {
+    path: "/map",
+    name: "Map",
     component: Map,
     meta: {
       title: "Carte",
@@ -86,11 +90,15 @@ const routes = [
           },
           {
             value: "event",
-            text: "Évenements"
+            text: "Évenement"
           },
           {
             value: "weather",
-            text: "Météo"
+            text: "Intempérie"
+          },
+          {
+            value: "solidarity",
+            text: "Solidarité"
           }
         ]
       }
@@ -98,7 +106,7 @@ const routes = [
   },
   {
     path: "/article/:id",
-    props: route => ({ step: route.params.id }),
+    props: route => ({ article: route.params.id }),
     name: "Article",
     component: Article
   },

@@ -1,12 +1,7 @@
 <template>
   <nav class="nav-bar-container">
     <div class="nav-bar-list">
-      <router-link
-        :to="item.link"
-        class="nav-bar-item"
-        v-for="item in nav"
-        :key="item.id"
-      >
+      <router-link :to="item.link" class="nav-bar-item" v-for="item in nav" :key="item.id">
         <img
           class="item-image"
           :src="
@@ -29,19 +24,19 @@ export default {
     return {
       nav: [
         {
-          link: "/",
-          name: "Accueil",
+          link: "/news",
+          name: "Actualités",
+          image: "news"
+        },
+        {
+          link: "/map",
+          name: "Carte",
           image: "home"
         },
         {
           link: "/alerts",
           name: "Alertes",
           image: "alerts"
-        },
-        {
-          link: "/news",
-          name: "Actualités",
-          image: "news"
         },
         {
           link: "/account",

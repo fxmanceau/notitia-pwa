@@ -17,6 +17,11 @@ export default {
   },
   beforeCreate() {
     this.$router.push({ path: "/connection/0" }, () => {});
+  },
+  watch: {
+    $route() {
+      this.$store.commit("updateCategory", "all");
+    }
   }
 };
 </script>

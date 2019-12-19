@@ -7,12 +7,8 @@
       <img src="/img/check.svg" alt="Logo check" class="check" />
     </div>
     <div class="connection-text-container">
-      <h2 class="connection-title" v-if="page[step].title">
-        {{ page[step].title }}
-      </h2>
-      <p class="connection-text" v-if="page[step].text">
-        {{ page[step].text }}
-      </p>
+      <h2 class="connection-title" v-if="page[step].title">{{ page[step].title }}</h2>
+      <p class="connection-text" v-if="page[step].text">{{ page[step].text }}</p>
     </div>
     <div class="connection-content">
       <component
@@ -42,14 +38,13 @@ export default {
     return {
       page: [
         {
-          title: "Bienvenue",
-          text:
-            "Placerat justo risus sed odio. Phasellus mattis magna turpis, id malesuada nisl sollicitudin et.",
+          title: "Welcome",
+          text: "Welcome to Notitia, a charity service for homeless people.",
           components: [
             {
               name: "ButtonLink",
               link: "/connection/1",
-              text: "Sélectionner la langue",
+              text: "Select the language",
               class: ""
             }
           ]
@@ -91,26 +86,25 @@ export default {
         {
           title: "Bonjour, nous sommes Notitia",
           text:
-            "Placerat justo risus sed odio. Phasellus mattis magna turpis, id malesuada nisl sollicitudin et.",
+            "Nous pensons que tout le monde à le droit d’avoir accès à l’information.",
           components: [
             {
               name: "ButtonLink",
               link: "/connection/3",
-              text: "Je veux être aidé",
+              text: "Recevoir des infos",
               class: ""
             },
             {
               name: "ButtonLink",
               link: "/connection/7",
-              text: "Je veux aider",
+              text: "Apporter des infos",
               class: "outline"
             }
           ]
         },
         {
-          title: "C'est parti !",
-          text:
-            "Placerat justo risus sed odio. Phasellus mattis magna turpis, id malesuada nisl sollicitudin et.",
+          title: "Commençons",
+          text: "Créez un compte afin de bénéficier des services Notitia",
           components: [
             {
               name: "ButtonLink",
@@ -151,7 +145,8 @@ export default {
           ]
         },
         {
-          title: "Créer un compte",
+          title: "Inscription",
+          text: "Veuillez vous inscrire avec votre numéro de téléphone.",
           components: [
             {
               name: "InputBloc",
@@ -169,14 +164,18 @@ export default {
                 {
                   type: "password",
                   placeholder: "Mot de passe"
+                },
+                {
+                  type: "text",
+                  placeholder: "Votre ville"
                 }
               ]
             }
           ]
         },
         {
-          title: "Bienvenue parmis nous !",
-          text: "Vous avez été enregistré",
+          title: "Bienvenue !",
+          text: "Vous avez été enregistré.",
           components: [
             {
               name: "ButtonLink",
