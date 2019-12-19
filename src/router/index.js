@@ -4,6 +4,7 @@ import Map from "../views/Map/Map.vue";
 import Alerts from "../views/Alerts";
 import Actu from "../views/Actus";
 import Account from "../views/Account";
+import Connection from "../views/Connection";
 
 Vue.use(VueRouter);
 
@@ -104,6 +105,11 @@ const routes = [
       locationButton: false,
       dropdown: false
     }
+  },
+  {
+    path: "/connection",
+    name: "Connection",
+    component: Connection
   }
 ];
 
